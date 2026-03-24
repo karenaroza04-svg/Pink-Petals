@@ -199,6 +199,27 @@
   <footer class="text-center py-8 md:py-10 text-[#b79a9f] text-sm">
     © 2026 Aroza Karen
   </footer>
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+    const nameInput = document.getElementById("name");
+    const errorText = document.getElementById("nameError");
+
+    nameInput.addEventListener("input", function () {
+      const value = nameInput.value;
+
+      if (/\d/.test(value)) {
+        errorText.classList.remove("hidden");
+        nameInput.classList.add("border-red-500");
+      } else {
+        errorText.classList.add("hidden");
+        nameInput.classList.remove("border-red-500");
+      }
+    });
+
+  });
+</script>
 
 </body>
 </html>
