@@ -173,17 +173,20 @@
 
         <div>
           <label class="text-sm text-[#8b6f74]">Full Name</label>
-          <input type="text" required class="w-full mt-1 px-4 py-3 border rounded-lg">
+          <input type="text" id="name" required class="w-full mt-1 px-4 py-3 border rounded-lg">
+          <p id="nameError" class="text-red-400 text-sm hidden">
+            Name should not contain numbers.
+          </p>
         </div>
 
         <div>
           <label class="text-sm text-[#8b6f74]">Email</label>
-          <input type="email" required class="w-full mt-1 px-4 py-3 border rounded-lg">
+          <input type="email" id="email" required class="w-full mt-1 px-4 py-3 border rounded-lg">
         </div>
 
         <div>
           <label class="text-sm text-[#8b6f74]">Message</label>
-          <textarea required class="w-full mt-1 px-4 py-3 border rounded-lg"></textarea>
+          <textarea id="message" required class="w-full mt-1 px-4 py-3 border rounded-lg"></textarea>
         </div>
 
         <button class="w-full bg-[#e8b4b8] text-white py-3 rounded-lg hover:scale-105 transition duration-300">
@@ -203,6 +206,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
 
+    const form = document.querySelector("form");
     const nameInput = document.getElementById("name");
     const errorText = document.getElementById("nameError");
 
@@ -218,8 +222,14 @@
       }
     });
 
+    form.addEventListener("submit", function (e) {
+      if (/\d/.test(nameInput.value)) {
+        e.preventDefault();
+      }
+    });
+
   });
 </script>
-
+  
 </body>
 </html>
